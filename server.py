@@ -11,7 +11,7 @@ import cv2
 import pillow_heif
 from PIL import Image
 import io
-from cac2627.tools import post_process
+from tools import post_process
 
 load_dotenv()
 pillow_heif.register_heif_opener()
