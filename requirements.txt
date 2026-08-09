@@ -4,3 +4,4 @@ python-dotenv
 easyocr
 opencv-python
 pillow_heif
+cohere
