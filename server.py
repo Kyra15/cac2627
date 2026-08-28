@@ -22,11 +22,7 @@ PROMPT_OCR = (
 )
 
 PROMPT = (
-    "This is a photo of a document. Extract all visible text carefully, "
-    "including small or faint text, then output it"
-    # "contains in 2-4 concise sentences. If it is a lab report or form, "
-    # "call out the document type and any key values plainly rather than "
-    # "guessing at unclear characters."
+    ""
 )
 
 app = Flask(__name__)
@@ -55,8 +51,6 @@ def analyze_photo():
             pil_img = Image.open(image_io).convert("RGB")
             image = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
 
-        # proccessed_img = post_process(image)
-
         success, encoded_img = cv2.imencode(".jpg", image)
 
         if success:
@@ -79,8 +73,7 @@ def analyze_photo():
                                 "image_url": {
                                     "url": data_uri,
                                     # "high" trades latency/cost for better
-                                    # accuracy on small/dense text — worth it
-                                    # for documents like lab reports.
+                                    # accuracy on small/dense text
                                     "detail": "high",
                                 },
                             },
