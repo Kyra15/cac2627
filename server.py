@@ -17,8 +17,8 @@ co = cohere.ClientV2(str(os.environ["API_KEY"]))
 
 PROMPT_OCR = (
     "Transcribe every piece of visible text in this image exactly as it "
-    "appears, in reading order. Do not summarize, explain, or add commentary "
-    "— output only the transcribed text."
+    "appears, in reading order. Do not summarize, explain, or add commentary."
+    "Output only the transcribed text."
 )
 
 PROMPT = (
