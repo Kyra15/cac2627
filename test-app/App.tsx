@@ -1,23 +1,13 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  ActivityIndicator,
-  Alert,
-} from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import * as ImagePicker from 'expo-image-picker';
-import DocumentScanner, { ResponseType } from 'react-native-document-scanner-plugin';
 import type { RootStackParamList } from './navigation/types';
 import HomeScreen from './screens/HomeScreen';
 import ScanScreen from './screens/ScanScreen';
 import { AuthProvider } from './context/AuthContext';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import "./styles/theme.css";
+import "./styles/app.css";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
  

@@ -99,9 +99,6 @@ export default function HomeScreen({ navigation }: Props): React.JSX.Element {
           <View style={[styles.statusDot, statusDotStyle(item.status)]} />
         </View>
         <View style={styles.cardBody}>
-          <Text style={[styles.categoryTag, { color: capColor }]}>
-            {CATEGORY_LABEL[item.category]}
-          </Text>
           <Text style={styles.cardTitle} numberOfLines={2}>
             {item.title}
           </Text>
@@ -117,14 +114,6 @@ export default function HomeScreen({ navigation }: Props): React.JSX.Element {
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
       <View style={styles.header}>
         <View style={styles.wordmarkRow}>
-          <View style={styles.capDots}>
-            {(['chemistry', 'lipid', 'hematology', 'thyroid'] as PanelCategory[]).map((cat) => (
-              <View
-                key={cat}
-                style={[styles.capDot, { backgroundColor: CATEGORY_COLOR[cat] }]}
-              />
-            ))}
-          </View>
           <Text style={styles.wordmark}>LabDog</Text>
         </View>
 
