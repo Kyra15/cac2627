@@ -4,7 +4,6 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  StyleSheet,
   ScrollView,
   ActivityIndicator,
   Alert,
@@ -14,6 +13,8 @@ import * as ImagePicker from 'expo-image-picker';
 import DocumentScanner, { ResponseType } from 'react-native-document-scanner-plugin';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../navigation/types';
+import { colors, fonts } from '../theme';
+import { styles } from '../styles/ScanStyle';
 
 // for local point at flask, for prod, point to api key backend endpoint
 const ANALYZE_URL = 'http://192.168.240.242:4200/analyze';
@@ -141,7 +142,7 @@ export default function ScanScreen({ navigation }: Props): React.JSX.Element {
           <Text style={styles.backLinkText}>‹ Library</Text>
         </TouchableOpacity>
 
-        <Text style={styles.title}>Photo Summarizer</Text>
+        <Text style={styles.title}>Lab Scan Upload</Text>
 
         <View style={styles.imageBox}>
           {imageUri ? (
@@ -168,13 +169,13 @@ export default function ScanScreen({ navigation }: Props): React.JSX.Element {
           {loading ? (
             <ActivityIndicator color="#fff" />
           ) : (
-            <Text style={styles.buttonText}>Summarize Photo</Text>
+            <Text style={styles.buttonText}>Summarize</Text>
           )}
         </TouchableOpacity>
 
         {summary ? (
           <View style={styles.summaryBox}>
-            <Text style={styles.summaryTitle}>Summary</Text>
+            {/* <Text style={styles.summaryTitle}>Summary</Text> */}
             <Text style={styles.summaryText}>{summary}</Text>
           </View>
         ) : null}
@@ -183,50 +184,3 @@ export default function ScanScreen({ navigation }: Props): React.JSX.Element {
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#0f1115' },
-  scroll: { padding: 20, alignItems: 'center' },
-  backLink: { alignSelf: 'flex-start', paddingVertical: 4 },
-  backLinkText: { color: '#60a5fa', fontSize: 15, fontWeight: '600' },
-  title: { fontSize: 24, fontWeight: '700', color: '#fff', marginVertical: 16 },
-  imageBox: {
-    width: '100%',
-    height: 280,
-    borderRadius: 16,
-    backgroundColor: '#1b1e26',
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'hidden',
-    marginBottom: 20,
-  },
-  image: { width: '100%', height: '100%', resizeMode: 'cover' },
-  placeholder: { color: '#6b7280' },
-  row: { flexDirection: 'row', gap: 12, marginBottom: 12 },
-  button: {
-    flex: 1,
-    backgroundColor: '#2563eb',
-    paddingVertical: 14,
-    borderRadius: 12,
-    alignItems: 'center',
-    marginHorizontal: 4,
-  },
-  analyzeButton: {
-    width: '100%',
-    backgroundColor: '#16a34a',
-    paddingVertical: 14,
-    borderRadius: 12,
-    alignItems: 'center',
-    marginTop: 8,
-  },
-  buttonDisabled: { backgroundColor: '#3f5c47' },
-  buttonText: { color: '#fff', fontWeight: '600', fontSize: 15 },
-  summaryBox: {
-    width: '100%',
-    backgroundColor: '#1b1e26',
-    borderRadius: 12,
-    padding: 16,
-    marginTop: 24,
-  },
-  summaryTitle: { color: '#9ca3af', fontSize: 13, marginBottom: 8, textTransform: 'uppercase' },
-  summaryText: { color: '#fff', fontSize: 16, lineHeight: 22 },
-});
