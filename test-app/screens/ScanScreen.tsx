@@ -15,10 +15,9 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../navigation/types';
 import { colors, fonts } from '../theme';
 import { styles } from '../styles/ScanStyle';
+import { API_URL } from '../config';
 
-// for local point at flask, for prod, point to api key backend endpoint
-// const ANALYZE_URL = 'http://192.168.240.242:4200/analyze';
-const ANALYZE_URL = 'http://127.0.0.1:4200/analyze'; // for hotspot
+const ANALYZE_URL = `${API_URL}/analyze`;
 
 interface AnalyzeResponse {
   summary?: string;
