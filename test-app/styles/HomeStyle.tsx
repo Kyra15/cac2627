@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   wordmark: {
     fontSize: 22,
     fontFamily: fonts.bold,
-    color: colors.navy,
+    color: colors.white,
     letterSpacing: 0.2,
   },
 

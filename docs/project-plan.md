@@ -77,7 +77,7 @@ Cut in this order: 2.8 (PDF import), 3.5 (attach report to chat), 4.3 (delete da
 
 ## 9. Responsibilities
 
-`assignee` in `tasks.csv`: **Claude** builds it, **You** does account or device steps (Supabase, builds, submission; exact instructions given when the task starts), **Both** for shared work like deploys and testing. Phase 0 rows are already built and have no dates.
+The team builds the app. AI is used only for structuring work and debugging, so `tasks.csv` has no assignee column. Phase 0 rows are already built and have no dates.
 
 ## 10. Risks
 
