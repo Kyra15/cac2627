@@ -1,0 +1,7 @@
+flask
+flask-cors
+python-dotenv
+opencv-python-headless
+pillow_heif
+cohere
+gunicorn

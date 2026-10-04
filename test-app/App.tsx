@@ -1,0 +1,54 @@
+import React from 'react';
+import { View, ActivityIndicator } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useFonts } from 'expo-font';
+import {
+  GoogleSansCode_400Regular,
+  GoogleSansCode_700Bold,
+} from '@expo-google-fonts/google-sans-code';
+import {
+  GoogleSans_400Regular,
+  GoogleSans_700Bold,
+} from '@expo-google-fonts/google-sans';
+import type { RootStackParamList } from './navigation/types';
+import { colors } from './theme';
+import HomeScreen from './screens/HomeScreen';
+import ScanScreen from './screens/ScanScreen';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export default function App(): React.JSX.Element | null {
+  const [fontsLoaded] = useFonts({
+    GoogleSansCode_400Regular,
+    GoogleSansCode_700Bold,
+    GoogleSans_400Regular,
+    GoogleSans_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, backgroundColor: colors.cream, justifyContent: 'center' }}>
+        <ActivityIndicator color={colors.navy} />
+      </View>
+    );
+  }
+
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: colors.cream },
+          }}
+        >
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Scan" component={ScanScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+}
