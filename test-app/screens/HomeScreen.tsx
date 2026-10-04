@@ -74,33 +74,35 @@ export default function HomeScreen({ navigation }: Props): React.JSX.Element {
         </View>
       </View>
 
-      <View style={styles.sectionHeaderRow}>
-        <Text style={styles.sectionTitle}>Your Reports</Text>
+      <View style={styles.body}>
+        <View style={styles.sectionHeaderRow}>
+          <Text style={styles.sectionTitle}>Your Reports</Text>
+        </View>
+
+        <FlatList
+          data={MOCK_REPORTS}
+          keyExtractor={(item) => item.id}
+          renderItem={renderCard}
+          numColumns={2}
+          columnWrapperStyle={styles.row}
+          contentContainerStyle={styles.gridContent}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={
+            <View style={styles.emptyState}>
+              <Text style={styles.emptyTitle}>No reports yet</Text>
+              <Text style={styles.emptyBody}>Scan a lab report to see it show up here.</Text>
+            </View>
+          }
+        />
+
+        <TouchableOpacity
+          style={styles.fab}
+          activeOpacity={0.85}
+          onPress={() => navigation.navigate('Scan')}
+        >
+          <Text style={styles.fabPlus}>+</Text>
+        </TouchableOpacity>
       </View>
-
-      <FlatList
-        data={MOCK_REPORTS}
-        keyExtractor={(item) => item.id}
-        renderItem={renderCard}
-        numColumns={2}
-        columnWrapperStyle={styles.row}
-        contentContainerStyle={styles.gridContent}
-        showsVerticalScrollIndicator={false}
-        ListEmptyComponent={
-          <View style={styles.emptyState}>
-            <Text style={styles.emptyTitle}>No reports yet</Text>
-            <Text style={styles.emptyBody}>Scan a lab report to see it show up here.</Text>
-          </View>
-        }
-      />
-
-      <TouchableOpacity
-        style={styles.fab}
-        activeOpacity={0.85}
-        onPress={() => navigation.navigate('Scan')}
-      >
-        <Text style={styles.fabPlus}>+</Text>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 }

@@ -1,8 +1,9 @@
 # CAC Lab Helper
 
 todo:
-- ui
-- key insights
-- plan
-- full report view
-- login
+[ ] ui -> integrate accent color more (top bar/logo bar green)
+[ ] dog logo
+[ ] key insights
+[ ] plan
+[ ] full report view
+[ ] login

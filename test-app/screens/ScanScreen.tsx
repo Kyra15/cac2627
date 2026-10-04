@@ -17,7 +17,8 @@ import { colors, fonts } from '../theme';
 import { styles } from '../styles/ScanStyle';
 
 // for local point at flask, for prod, point to api key backend endpoint
-const ANALYZE_URL = 'http://192.168.240.242:4200/analyze';
+// const ANALYZE_URL = 'http://192.168.240.242:4200/analyze';
+const ANALYZE_URL = 'http://127.0.0.1:4200/analyze'; // for hotspot
 
 interface AnalyzeResponse {
   summary?: string;

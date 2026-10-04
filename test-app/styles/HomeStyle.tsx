@@ -4,17 +4,23 @@ import { colors, fonts } from '../theme';
 const CARD_RADIUS = 16;
 
 export const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.cream },
+  container: { flex: 1, backgroundColor: colors.sage },
+  body: { flex: 1, backgroundColor: colors.cream },
+
+  headerColor: {
+    backgroundColor: colors.sage,
+    
+  },
 
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 12,
-    paddingBottom: 8,
+    backgroundColor: colors.sage,
+    paddingVertical: 14,
   },
-  wordmarkRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  wordmarkRow: { flexDirection: 'row', alignItems: 'center', gap: 10},
   wordmark: {
     fontSize: 22,
     fontFamily: fonts.bold,
