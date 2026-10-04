@@ -2,7 +2,7 @@ export type RootStackParamList = {
   Home: undefined;
   Scan: undefined;
   Insights: undefined;
-  Login: undefined;
+  SignIn: undefined;
 };
 
 

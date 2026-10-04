@@ -16,6 +16,7 @@ import type { RootStackParamList } from './navigation/types';
 import { colors } from './theme';
 import HomeScreen from './screens/HomeScreen';
 import ScanScreen from './screens/ScanScreen';
+import SignInScreen from './screens/SignInScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -39,7 +40,7 @@ export default function App(): React.JSX.Element | null {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="SignIn"
           screenOptions={{
             headerShown: false,
             contentStyle: { backgroundColor: colors.cream },
@@ -47,6 +48,7 @@ export default function App(): React.JSX.Element | null {
         >
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Scan" component={ScanScreen} />
+          <Stack.Screen name="SignIn" component={SignInScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
