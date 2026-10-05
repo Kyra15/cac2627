@@ -22,7 +22,7 @@ function friendlyError(message: string): string {
   if (m.includes('already registered') || m.includes('already been registered')) {
     return 'We could not create that account. Try signing in instead.';
   }
-  if (m.includes('password') && m.includes('at least')) return 'Please choose a longer password (6 or more characters).';
+  if (m.includes('password') && m.includes('at least')) return 'Please choose a longer password (8 or more characters).';
   if (m.includes('rate limit')) return 'Too many attempts. Please wait a minute and try again.';
   return 'Something went wrong. Please try again.';
 }
