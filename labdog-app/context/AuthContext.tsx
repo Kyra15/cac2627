@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { Session } from '@supabase/supabase-js';
 import { supabase, supabaseConfigured } from '../lib/supabase';
 
@@ -14,6 +14,7 @@ interface AuthContextValue {
   signIn: (email: string, password: string) => Promise<Result>;
   signOut: () => Promise<void>;
 }
+const AuthContext = createContext<AuthContextValue | null>(null);
 
 const OFFLINE = "We couldn't reach the internet. Check your connection and try again.";
 
@@ -79,4 +80,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }): React
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export function useAuth(): AuthContextValue {
+  const ctx = useContext(AuthContext);
+  if (!ctx) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return ctx;
 }

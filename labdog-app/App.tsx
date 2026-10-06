@@ -3,7 +3,7 @@ import { View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { useAuth, AuthProvider } from '../context/AuthContext';
+import { useAuth, AuthProvider } from './context/AuthContext';
 import { useFonts } from 'expo-font';
 import {
   GoogleSansCode_400Regular,

@@ -23,16 +23,7 @@ const MOCK_REPORTS: Report[] = [
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function HomeScreen({ navigation }: Props): React.JSX.Element {
-  // const { isLoggedIn, signOut } = useAuth();
-
-  // const handleAuthPress = (): void => {
-  //   if (isLoggedIn) {
-  //     signOut();
-  //   } else {
-  //     navigation.navigate('Login');
-  //   }
-  // };
-  const handleAuthPress = (): void => {};
+  const { signOut } = useAuth();
 
   const renderCard = ({ item }: { item: Report }): React.JSX.Element => (
     <TouchableOpacity
@@ -63,14 +54,10 @@ export default function HomeScreen({ navigation }: Props): React.JSX.Element {
 
         <View style={styles.headerActions}>
 
-          {/* <TouchableOpacity
-            style={[styles.authButton, isLoggedIn && styles.authButtonActive]}
-            onPress={handleAuthPress}
-            activeOpacity={0.8}
-          >
-            {isLoggedIn && <View style={styles.onlineDot} />}
-            <Text style={styles.authButtonText}>{isLoggedIn ? 'Sign Out' : 'Sign In'}</Text>
-          </TouchableOpacity> */}
+          <TouchableOpacity style={styles.authButton} onPress={() => signOut()} activeOpacity={0.8}>
+            <Text style={styles.authButtonText}>Sign Out</Text>
+          </TouchableOpacity>
+          
         </View>
       </View>
 

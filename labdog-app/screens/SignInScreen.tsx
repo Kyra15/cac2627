@@ -19,11 +19,13 @@ type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 
 type Mode = 'signIn' | 'signUp';
 type Field = 'email' | 'password';
-type Errors = Partial<Record<Field, string>>;
+type Errors = Partial<Record<Field | 'form', string>>;
  
 const MIN_PASSWORD = 8;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PLACEHOLDER = `${colors.navy}99`;
+
+const { signIn, signUp } = useAuth();
 
 const COPY = {
   signIn: {
@@ -81,8 +83,18 @@ export default function SignInScreen(): React.JSX.Element {
  
     setLoading(true);
     try {
-      // call supabase auth here
-      // later issue probably
+        const result =
+            mode === 'signUp'
+            ? await signUp(email.trim(), password)
+            : await signIn(email.trim(), password);
+
+        if (result.error) {
+            setErrors({ form: result.error });
+        } else if (result.needsConfirmation) {
+            setErrors({ form: 'Check your email to confirm your account, then sign in.' });
+            setMode('signIn');
+        }
+        // on success there is nothing to do: the navigator switches to Home by itself
     } finally {
       setLoading(false);
     }
@@ -176,6 +188,12 @@ export default function SignInScreen(): React.JSX.Element {
               {errors.password ? (
                 <Text style={styles.errorText} accessibilityRole="alert">
                   {errors.password}
+                </Text>
+              ) : null}
+
+              {errors.form ? (
+                <Text style={styles.errorText} accessibilityRole="alert">
+                    {errors.form}
                 </Text>
               ) : null}
             </View>
