@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "test-app",
-    "slug": "test-app",
+    "name": "labdog",
+    "slug": "labdog",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.kmovva.test-app"
+      "bundleIdentifier": "com.kmovva.labdog-app"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +18,7 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.kmovva.testapp"
+      "package": "com.kmovva.labdog-app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
