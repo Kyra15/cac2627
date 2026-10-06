@@ -25,8 +25,6 @@ const MIN_PASSWORD = 8;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PLACEHOLDER = `${colors.navy}99`;
 
-const { signIn, signUp } = useAuth();
-
 const COPY = {
   signIn: {
     title: 'Welcome Back',
@@ -52,6 +50,7 @@ export default function SignInScreen(): React.JSX.Element {
   const [focused, setFocused] = useState<Field | null>(null);
   const [errors, setErrors] = useState<Errors>({});
   const [loading, setLoading] = useState<boolean>(false);
+  const { signIn, signUp } = useAuth();
  
   const passwordRef = useRef<TextInput>(null);
   const copy = COPY[mode];

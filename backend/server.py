@@ -14,7 +14,7 @@ from flask_cors import CORS
 from PIL import Image
 from werkzeug.exceptions import HTTPException
 
-from backend.tools import post_process
+from tools import post_process
 
 load_dotenv()
 pillow_heif.register_heif_opener()
