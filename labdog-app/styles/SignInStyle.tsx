@@ -18,13 +18,13 @@ export const styles = StyleSheet.create({
   wordmark: {
     fontFamily: fonts.title_bold,
     fontSize: 40,
-    color: colors.navy,
+    color: colors.white,
     letterSpacing: -0.5,
   },
   subheader: {
     fontFamily: fonts.regular,
     fontSize: 16,
-    color: colors.navy,
+    color: colors.white,
     marginTop: 6,
   },
  

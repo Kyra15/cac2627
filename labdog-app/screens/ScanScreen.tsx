@@ -13,7 +13,6 @@ import * as ImagePicker from 'expo-image-picker';
 import DocumentScanner, { ResponseType } from 'react-native-document-scanner-plugin';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../navigation/types';
-import { colors, fonts } from '../theme';
 import { styles } from '../styles/ScanStyle';
 import { API_URL } from '../config';
 
@@ -137,48 +136,52 @@ export default function ScanScreen({ navigation }: Props): React.JSX.Element {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
-      <ScrollView contentContainerStyle={styles.scroll}>
+
+      <View style={styles.header}>
         <TouchableOpacity style={styles.backLink} onPress={() => navigation.goBack()}>
           <Text style={styles.backLinkText}>‹ Library</Text>
         </TouchableOpacity>
+      </View>
 
-        <Text style={styles.title}>Lab Scan Upload</Text>
+      <ScrollView contentContainerStyle={styles.scroll}>
 
-        <View style={styles.imageBox}>
-          {imageUri ? (
-            <Image source={{ uri: imageUri }} style={styles.image} />
-          ) : (
-            <Text style={styles.placeholder}>No photo selected yet</Text>
-          )}
-        </View>
+          <Text style={styles.title}>Lab Scan Upload</Text>
 
-        <View style={styles.row}>
-          <TouchableOpacity style={styles.button} onPress={scanDocument}>
-            <Text style={styles.buttonText}>Take Photo</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={pickFromLibrary}>
-            <Text style={styles.buttonText}>Upload Photo</Text>
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity
-          style={[styles.analyzeButton, !imageBase64 && styles.buttonDisabled]}
-          onPress={analyzePhoto}
-          disabled={!imageBase64 || loading}
-        >
-          {loading ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <Text style={styles.buttonText}>Summarize</Text>
-          )}
-        </TouchableOpacity>
-
-        {summary ? (
-          <View style={styles.summaryBox}>
-            {/* <Text style={styles.summaryTitle}>Summary</Text> */}
-            <Text style={styles.summaryText}>{summary}</Text>
+          <View style={styles.imageBox}>
+            {imageUri ? (
+              <Image source={{ uri: imageUri }} style={styles.image} />
+            ) : (
+              <Text style={styles.placeholder}>No photo selected yet</Text>
+            )}
           </View>
-        ) : null}
+
+          <View style={styles.row}>
+            <TouchableOpacity style={styles.button} onPress={scanDocument}>
+              <Text style={styles.buttonText}>Take Photo</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={pickFromLibrary}>
+              <Text style={styles.buttonText}>Upload Photo</Text>
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity
+            style={[styles.analyzeButton, !imageBase64 && styles.buttonDisabled]}
+            onPress={analyzePhoto}
+            disabled={!imageBase64 || loading}
+          >
+            {loading ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Text style={styles.buttonText}>Summarize</Text>
+            )}
+          </TouchableOpacity>
+
+          {summary ? (
+            <View style={styles.summaryBox}>
+              {/* <Text style={styles.summaryTitle}>Summary</Text> */}
+              <Text style={styles.summaryText}>{summary}</Text>
+            </View>
+          ) : null}
       </ScrollView>
     </SafeAreaView>
   );
